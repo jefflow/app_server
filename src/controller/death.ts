@@ -10,7 +10,8 @@ export class Death {
 
       const [results, metadata] = await sequelize.query('\
       SELECT "Year", "Month", SUM("Data_Value") as data_value\
-      FROM public.death_count\
+      FROM death_count\
+      WHERE "State" = :state_name\
       GROUP BY "Year", "Month"\
       ORDER BY "Year", "Month"\
       ',

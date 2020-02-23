@@ -2,7 +2,7 @@ import {JsonController, Get, Post, QueryParam, QueryParams, Param} from "routing
 
 import sequelize from "../db/postgres";
 
-@JsonController("/crime")
+@JsonController("/analytics")
 export class CrimeRate {
 
     @Get("/:state")
