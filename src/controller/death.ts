@@ -7,14 +7,14 @@ export class Death {
 
     @Get("/:state")
     async getDeathByState(@Param("state") state: string) {
-
-      const [results, metadata] = await sequelize.query('\
+      
+      const [results, metadata] = await sequelize.query(`\
       SELECT "Year", "Month", SUM("Data_Value") as data_value\
       FROM death_count\
       WHERE "State" = :state_name\
       GROUP BY "Year", "Month"\
-      ORDER BY "Year", "Month"\
-      ',
+      ORDER BY "Year", to_date("Month", 'Mon')\
+      `,
       {
         replacements: { state_name: state },
       }
